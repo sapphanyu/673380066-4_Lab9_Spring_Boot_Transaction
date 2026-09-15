@@ -1,7 +1,6 @@
 package com.example.lab9.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.lab9.model.Account;
 import com.example.lab9.model.DepositTransaction;
@@ -32,5 +31,9 @@ public class DepositService {
         // 3. สร้าง DepositTransaction ผูกกับ Account นั้น แล้วบันทึกลง Database
         DepositTransaction transaction = new DepositTransaction(amount, account);
         depositRepository.save(transaction);
+
+        // บรรทัดที่เพิ่มเข้ามาเพื่อทดสอบ Rollback:
+        //throw new RuntimeException("Test Rollback");
     }
+
 }
